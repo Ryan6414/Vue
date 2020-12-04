@@ -5,20 +5,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<script src="../lib/vue.js">
-</script>
+    <script src="../lib/vue.js"></script>
+    <style>
+        .red {
+            background-color: red;
+        }
+       
+        .yll {
+            background-color: yellow;
+        }
+    </style>
 
+</head>
 <body>
     <div id='box'>
         {{myname}}
+        <button @click='handleClick()'>chage</button>
+
+        <div v-show='showAnd'>
+            隐藏和显示
+        </div>
+
+        <div v-if="creDel">
+            創建和刪除
+        </div>
+
+        <div v-bind:class=" clor ? 'red':'yll'">
+            動態切換背景顏色
+        </div>
+
+        <div>
+            <ul>
+               <li  v-for="(item,index) in datalist"> {{item}} : {{index}}  </li>
+            </ul>
+        </div>
+
+
     </div>
 
     <script>
         var vm = new Vue({
             el: '#box',
             data: {
-                myname: 'kerwin'
+                myname: 'kerwin',
+                showAnd: true,
+                creDel: false,
+                clor: false,
+                datalist:['a','b','c','d','e','f','g']
+            },
+            methods: {
+                handleClick() {
+                    console.log("wanghaitao")
+                    this.myname = "xiaoming",
+                        this.showAnd = !this.showAnd,
+                        this.creDel = !this.creDel,
+                        this.clor = !this.clor
+                }
             }
         })
     </script>

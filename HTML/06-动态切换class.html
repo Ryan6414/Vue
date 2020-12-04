@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue.js"></script>
+    <style>
+        .a{
+
+        }
+        .b{
+
+        }
+        .c{
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div :class="obj">动态切换class</div>
+        <div :class="ads">动态切换class</div>
+        <div style="background-color: royalblue;">style切换</div>
+        <div :style="syl">style切换</div>
+    </div>
+    <script>
+      var vm =  new Vue({
+            el:'#box',
+            data:{
+                obj:{
+                    a:true,
+                    b:true,
+                    c:true,
+                },
+                ads:['a','b','c'],
+                syl:{
+                    backgroundColor:'yellow',
+                }
+            },
+            
+        })
+    </script>
+</body>
+</html>
