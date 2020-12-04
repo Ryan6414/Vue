@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+<div id="box" ></div>
+    <script>
+        var obj = {
+            se : '23',
+        }
+        obj.se2 = 100
+
+        var si = document.getElementById("box");
+        
+        Object.defineProperty(obj,'name',{
+            set(h){
+                  console.log('你好帅哥')
+                  si.innerHTML = h;
+            },
+
+            get(){
+                alert("好了咯我")
+            }
+        })
+
+    </script>
+</body>
+</html>
