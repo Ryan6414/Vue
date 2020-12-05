@@ -11,10 +11,10 @@
 <body>
 
     <div id="box">
-        <input type="text" @input="chan" v-mode='as'/> <button @Click="add()">添加</button>
+        <input type="text" @input="chan" /> <button @Click="add()">添加</button>
         <input type="text" v-model="sts" /> <button @Click="add_2()">添加</button>
-
-        <ul>
+        <div v-if="datalist.length===0">购物车空空如也!</div>
+        <ul v-else>
             <li v-for= "(i,s) in datalist" >
                 {{i}} <button @Click="del(s)">删除</button>
             </li>
@@ -34,7 +34,6 @@
                 add() {
                     console.log('add');
                     this.datalist.push(this.mytext);  
-                    this.as=""
                 },
 
                 add_2() {
@@ -45,8 +44,7 @@
                 
                 chan(evt){
                     console.log('input',evt.target.value);
-                    this.mytext = evt.target.value  
-                                   
+                    this.mytext = evt.target.value                                   
                 }  , 
              
                 del(i){
