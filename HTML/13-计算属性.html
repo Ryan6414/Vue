@@ -9,15 +9,21 @@
 
 <body>
     <div id="box">
-
+       {{capitalize}}
+       {{capitalize}}
     </div>
     <script>
-        new Vue({
+     var vm =  new Vue({
             el:'#box',
             data:{
-
+            myname : 'stake',
             },
+            computed: {
+                capitalize(){
+                    return this.myname.substring(0,1).toUpperCase()+this.myname.substring(1);
+                },
             
+            }
         })
     </script>
 </body>

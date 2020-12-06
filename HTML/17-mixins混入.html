@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue.js"></script>
+</head>
+<!-- 提示:当外部的方法和vue内部的方法重名时,mixins会优先使用内部的方法 -->
+<body>
+    <div id="box">
+        <!-- 3_直接在vue修饰的属性中使用  -->
+        <button @click="max()"> 确定 </button>
+        <!-- 3.1_直接在vue变量属性中使用 -->
+        {{tol}}
+    </div>
+
+    <script type="text/javascript">
+//1_按照vue中的格式存放代码
+        var obj = {
+            methods: {
+                max() {
+                    console.log("最大值");
+                },
+                min() {
+                    console.log("最小值");
+                }
+            },
+            computed: {
+                tol() {
+                    return "aaasda";
+                }
+            }
+        };
+
+      var vm =  new Vue({
+            el: '#box',
+            data: {           
+            },
+            //2_将外来的代码混入到vue中
+            mixins: [obj],
+            methods: {
+                max() {
+                    console.log("最大值");
+                },
+            }
+        });
+    </script>
+</body>
+
+</html>

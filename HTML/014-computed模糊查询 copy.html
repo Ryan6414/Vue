@@ -11,8 +11,7 @@
 <body>
     <div id="box">
         <input type="text" v-model="te" />
-        <!-- {{msg()}} 双括号也可以调用函数-->
-        <li v-for="(item,index) in msg()">{{item}}</li>
+        <li v-for="(item,index) in msg">{{item}}</li>
         </ul>
     </div>
 
@@ -24,14 +23,17 @@
                 datalist: ['aa', 'bb', 'cc', 'dd', 'ee', 'aw', '2e', 're', 'cw']
             },
             methods: {
+              
+            },
+            computed: {
                 msg() {                      
                     return this.datalist.filter(
-                      item => item.includes(this.te)  //可以正常执行
+                        item => item.includes(this.te)  //可以正常执行
                         // function(item){
                         //  return  item.includes(this.te);
-                        // }   //把箭头函数转回来后就报错了             
+                        //}   //把箭头函数转回来后就报错了             
                     );
-                }
+                } 
             }
         })
     </script>

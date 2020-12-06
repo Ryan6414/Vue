@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue.js"></script>
+    <style>
+        ul,
+        li {
+            list-style: none;
+            padding: 10px;
+        }
+
+        img {
+            width: 50px;
+            height: 50px;
+            display: inline;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div v-if="cartList .length==0">购物车空空如也</div>
+        <template v-else>
+            <input type="checkbox" v-model="isAllChecked" />全选/全不选
+            <!-- @click 是点击马上就触发,触发条件过早,change是发生变动后触发.isAllChecked默认全不选  -->
+            <ul>
+                <li v-for="(item , index ) in cartList" :key=item.id>
+                    <input type="checkbox" v-model="checekdGroup" :value="item" @change="checkeds" />
+                    <!-- 每一次勾选复选框的时候,执行checkeds方法,并时刻修改知全选/全不选的状态 -->
+                    <img :src="item.image" />
+                    <div>
+                        <div>名称: {{item.name}}</div>
+                        <div>价格: ${{item.price}}</div>
+                    </div>
+                    <!-- vue 条件禁止按钮 -->
+                    <button @click="item.num--" :disabled="item.num === 1">-</button>
+                    {{item.num}}
+                    <button @click="item.num++" :disabled="item.num === item.limit">+</button>
+                    <button @click="del(index, item.id)">删除</button>
+                    <!-- 删除不仅要删除数据源那个数组(cartList),还要把备份的(勾选状态数组)checekdGroup删除 -->
+                    <!-- 所以需要传两个值,index是根据下标删源数组(cartList),item是用来过滤没有选中的id并重新赋值给 checekdGroup -->
+                    <!-- 为啥要过滤掉没有选择的id呢? 因为是重新赋值,如果过滤选中的id重新赋值后你把选中的留下,没选中的删除了(反操作了) -->
+                </li>
+            </ul>
+
+            <div style="background: sandybrown;">总金额: {{sum()}}</div>
+
+        </template>
+    </div>
+    <script>
+        new Vue({
+            el: '#box',
+            data: {
+                checekdGroup: [],
+                isAllChecked: false,
+                cartList: [
+                    {
+                        id: 1023,      //id
+                        name: 'xw-50机油',   //商品名
+                        price: 500,     //价格
+                        limit: 3,     //限购
+                        num: 2,      //购物车数量
+                        image: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2853553659,1775735885&fm=26&gp=0.jpg'
+                    },
+
+                    {
+                        id: 1013,
+                        name: '手机保护壳',
+                        price: 10,
+                        limit: 46,
+                        num: 45,
+                        image: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2202780618,895893289&fm=26&gp=0.jpg'
+                    },
+                    {
+                        id: 1121,
+                        name: '矿物质奶茶',
+                        price: 20,
+                        limit: 15,
+                        num: 12,
+                        image: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1078861629,3747050294&fm=26&gp=0.jpg'
+                    },
+                    {
+                        id: 1038,
+                        name: '剃须刀',
+                        price: 50,
+                        limit: 6,
+                        num: 2,
+                        image: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2485954775,21433741&fm=26&gp=0.jpg'
+                    },
+                    {
+                        id: 1009,
+                        name: '菜刀',
+                        price: 100,
+                        limit: 20,
+                        num: 12,
+                        image: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=191648073,1956090025&fm=11&gp=0.jpg'
+                    }
+                ]
+            },
+            methods: {
+                del(index, ids) {
+                    console.log(ids)
+                    // 删除原数组!(删了原数组后,一定得记得删checekdGroup数组数据)
+                    this.cartList.splice(index, 1);
+                    //删除checked id对应的元素              
+                    this.checekdGroup = this.checekdGroup.filter(item => item.id !== ids)
+                    //每次删除以后判断下是否是全选或全不选(这一步是最后一步)
+                    this.checkeds();
+                },
+                sum() {
+                    var total = 0;
+                    //将checekdGroup数组中已有的值(相当于勾选了的值)进行累加
+                    this.checekdGroup.forEach(item => {
+                        total += item.price * item.num;
+                    });
+                    return total;
+                },
+
+                checkeds() {
+                    //原生数组长度和已勾选的长度一样就标识全选了
+                    if (this.checekdGroup.length === this.cartList.length) {
+                        this.isAllChecked = true;
+                    } else {
+                        this.isAllChecked = false;
+                    }
+                }
+            },
+            watch: {
+                isAllChecked(data) {
+                    console.log(this.checekdGroup.length+" 勾选数组");
+                    console.log(this.cartList.length + "源数组")
+                   // 监听到状态,看当前状态是true(勾选),还是false(没有勾选)
+                    if (data) { 
+                        //如果候选了,源数组覆盖勾选用的数组(相当于全选了)
+                        this.checekdGroup = this.cartList
+                    } else {
+                        //加一层判断是避免全选状态下再去取消一个勾选,导致全部都不选中的bug
+                        if (this.checekdGroup.length === this.cartList.length) {
+                            this.checekdGroup = [];
+                        }
+                    }
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>
