@@ -26,9 +26,9 @@
             methods: {
                 msg() {                      
                     return this.datalist.filter(
-                        // item => item.includes(this.te)  可以正常执行
+                       // item => item.includes(this.te)  //可以正常执行
                         function(item){
-                            return item.includes(this.te);
+                         return  item.includes(this.te);
                         }   //把箭头函数转回来后就报错了             
                     );
                 }

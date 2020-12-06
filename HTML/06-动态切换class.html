@@ -24,6 +24,7 @@
         <div :class="ads">动态切换class</div>
         <div style="background-color: royalblue;">style切换</div>
         <div :style="syl">style切换</div>
+        <button @click="ne">切换</button>
     </div>
     <script>
       var vm =  new Vue({
@@ -39,6 +40,12 @@
                     backgroundColor:'yellow',
                 }
             },
+            methods: {
+                ne(){
+                   this.ads.pop()
+                   this.syl.backgroundColor='red';
+                }
+            }
             
         })
     </script>

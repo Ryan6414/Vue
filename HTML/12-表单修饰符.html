@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue.js"></script>
+</head>
+    
+<body>
+    <div id="box">
+       用户名: <input type="text" v-model.lazy="mytext" /> {{mytext}}
+       年龄 : <input type="number" v-model.number="myage" />
+       <button @click ='login'> 登入 </button>
+      
+    </div>
+    <script>
+        new Vue({
+            el:'#box',
+            data:{
+                mytext : '',
+                myage : ''
+            },
+            methods: {
+                login(){
+                    console.log(this.myage)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
