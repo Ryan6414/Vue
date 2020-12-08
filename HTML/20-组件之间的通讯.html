@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="../lib/vue.js"></script>
+
+<body>
+    <div id="box">
+      <my-title myti='退出' :myshow='false'></my-title>
+      <my-title :myshow='false' style="background-color: burlywood;"></my-title> 
+      <my-title style="background:skyblue; width: 300px;"></my-title>
+      <button @click='su'>提交</button>
+    </div>
+
+    <script>
+        Vue.component('my-title',{
+            template:`
+            <div style="background: red; width: 200px;">
+                <span>{{myti}}</span>
+                <span v-show='myshow'>列表</span>
+                <span>首页</span>
+                <button @click='su' v-show='myshow'>提交</button>
+            </div>
+            `,
+            props: {
+                myti:{
+                    type:String,                    
+                },
+                myshow:{
+                    type:Boolean,
+                    default:true
+                }
+            },
+            data(){
+                return {
+                   su(){
+                      
+                   } 
+                };
+            }        
+        });
+
+     var vm =   new Vue({
+            el: "#box",
+            data:{
+               mytis : '退出',
+            },
+            methods: {
+                su(){
+
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

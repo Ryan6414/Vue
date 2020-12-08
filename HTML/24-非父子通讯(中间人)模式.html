@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系</title>
+</head>
+<script src="../lib/vue.js"></script>
+
+<body>
+    <div id="box">
+        <button @click='handleAjax'>ajax</button>
+    </div>
+
+    <script>
+        Vue.component('my-title', {
+            template: `
+           
+            `,
+            methods:{
+               
+            },
+            data() {
+              
+                
+            },
+            props: {
+               
+            }
+        });
+
+        var vm = new Vue({
+            el: "#box",
+            data: {
+               datalist:[],
+            },
+            methods: {
+                handleAjax(){
+                    fetch('/HTML/json/maoyan.json')
+                    .then(item=>{item.json()})
+                    .then(item=>{console.log(item)});
+                   
+                }
+                
+            },
+            computed: {
+               
+            }
+        })
+    </script>
+
+</body>
+
+</html>

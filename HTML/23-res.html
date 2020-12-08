@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系</title>
+</head>
+<script src="../lib/vue.js"></script>
+
+<body>
+    <div id="box">
+        <input type="text" ref="def" />
+        <my-title left="子组件" ref='zi'></my-title>
+        <button @click='handle'>add</button>
+    </div>
+
+    <script>
+        Vue.component('my-title', {
+            template: `
+            <div >               
+                <button >{{left}}</button>
+            </div>
+            `,
+            methods:{
+                hand(){
+                   
+                }
+            },
+            data() {
+                return {
+                   money:1000000000000
+                };
+            },
+            props: {
+               left :{
+                   type:String
+               }
+            }
+        });
+
+        var vm = new Vue({
+            el: "#box",
+            data: {
+                background : 'width: 220px; background:blue; text-align: center; color:rgb(255,255,255)',
+            },
+            methods: {
+                handle(){
+                    console.log(this.$refs.zi.left)
+;                }
+                
+            },
+            computed: {
+                msg(){
+                    return  6414;
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

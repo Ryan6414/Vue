@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系</title>
+</head>
+<script src="../lib/vue.js"></script>
+
+<body>
+    <div id="box">
+        <my-title left='退出' count='列表' rigt='首页' style="background: rgb(167, 112, 73); "></my-title>
+        <my-title left="搜索" count='页面' rigt='百度' style="background: darkcyan;"></my-title>
+        <my-title :showb1="false" left='退出' count='列表' rigt='首页' style="background: darkkhaki;"></my-title>
+        <my-title bg='width: 220px; background:red; text-align: center; color:rgb(255,255,255)' :showb1='false' :showb2='false' count='沙滩'></my-title>
+        <my-title :bg='background' :mymsg='msg' :showb1='false' :showb2='false'></my-title>
+    </div>
+
+    <script>
+        Vue.component('my-title', {
+            template: `
+            <div :style='bg'>               
+                <button v-show='showb1'>{{left}}</button>
+                <span v-show='shows' >{{count}}</span>
+                <button v-show='showb2' >{{rigt}}</button>
+                {{mymsg}}
+            </div>
+            `,
+            props: {
+                bg: {
+                    type: String,
+                    default: "width: 200px;"
+                },
+                left: {
+                    type: String,
+                },
+                count: {
+                    type: String,
+                },
+                rigt: {
+                    type: String,
+                },
+                showb1: {
+                    type: Boolean,
+                    default: true
+                },
+                showb2: {
+                    type: Boolean,
+                    default: true
+                },
+                shows: {
+                    type: Boolean,
+                    default: true
+                },
+                mymsg :{
+                    type:Number
+                }
+            },
+
+            data() {
+                return {
+                    su() {
+
+                    }
+                };
+            }
+        });
+
+        var vm = new Vue({
+            el: "#box",
+            data: {
+                background : 'width: 220px; background:blue; text-align: center; color:rgb(255,255,255)',
+            },
+            methods: {
+                su() {
+
+                }
+            },
+            computed: {
+                msg(){
+                    return  6414;
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

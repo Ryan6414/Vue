@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系</title>
+</head>
+<script src="../lib/vue.js"></script>
+
+<body>
+    <div id="box">
+        <my-title :showb1='true' left='第一个' bg="background:blue;width:200px;color:rgb(255,255,255)" :showb2='true' rigt='下一页' count='内容'></my-title>
+        <my-title @me='handle' :showb2='true' rigt="子传父"></my-title>
+    </div>
+
+    <script>
+        Vue.component('my-title', {
+            template: `
+            <div :style='bg'>               
+                <button v-show='showb1'>{{left}}</button>
+                <span v-show='shows' >{{count}}</span>
+                <button v-show='showb2' @click=hand>{{rigt}}</button>
+                {{mymsg}}
+            </div>
+            `,
+            methods:{
+                hand(){
+                    this.$emit("me", this.money)
+                }
+            },
+            data() {
+                return {
+                   money:1000000000000
+                };
+            },
+            props: {
+                bg: {
+                    type: String,
+                    default: "width: 200px;"
+                },
+                left: {
+                    type: String,
+                },
+                count: {
+                    type: String,
+                },
+                rigt: {
+                    type: String,
+                },
+                showb1: {
+                    type: Boolean,
+                    default: false
+                },
+                showb2: {
+                    type: Boolean,
+                    default: false
+                },
+                shows: {
+                    type: Boolean,
+                    default: true
+                },
+                mymsg :{
+                    type:Number
+                }
+            }
+        });
+
+        var vm = new Vue({
+            el: "#box",
+            data: {
+                background : 'width: 220px; background:blue; text-align: center; color:rgb(255,255,255)',
+            },
+            methods: {
+                handle(data) {
+                    console.log(data)
+                }
+            },
+            computed: {
+                msg(){
+                    return  6414;
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

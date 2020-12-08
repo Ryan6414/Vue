@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue.js"></script>
+    <script src="../lib/axios.js"></script>
+    <style>
+        li{
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <button @click="handle()"> axios</button>
+        <ul>
+            <li v-for="(item,index) in dataList" :key="item.id">
+                <img :src="imgHandler(item.img)" />
+                  <h5>{{item.nm}}</h5>
+            </li>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el: '#box',
+            data: {
+                dataList:[]
+            },
+            methods: {
+                handle() {
+                    axios.get("/HTML/json/maoyan.json").then(res => { 
+                        this.dataList=res.data.movieList
+                     });
+                },
+                imgHandler(path){                  
+                    return path.replace('w.h','')+'@1l_1e_1c_128w_180h';
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

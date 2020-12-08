@@ -1,0 +1,275 @@
+{
+    "coming": [],
+    "movieIds": [
+        1282401,
+        1277751,
+        1240838,
+        1228788,
+        247294,
+        345809,
+        461076,
+        1286015,
+        1298050,
+        1225578,
+        1339160,
+        1225758,
+        1328712,
+        1229845,
+        1357206,
+        1285581,
+        1280000,
+        1218142,
+        1243732,
+        1368394,
+        342574,
+        1203282,
+        1303287,
+        1281368
+    ],
+    "stid": "576591972453269000",
+    "stids": [
+        {
+            "movieId": 1282401,
+            "stid": "576591972453269000_a1282401_c0"
+        },
+        {
+            "movieId": 1277751,
+            "stid": "576591972453269000_a1277751_c1"
+        },
+        {
+            "movieId": 1240838,
+            "stid": "576591972453269000_a1240838_c2"
+        },
+        {
+            "movieId": 1228788,
+            "stid": "576591972453269000_a1228788_c3"
+        },
+        {
+            "movieId": 247294,
+            "stid": "576591972453269000_a247294_c4"
+        },
+        {
+            "movieId": 345809,
+            "stid": "576591972453269000_a345809_c5"
+        },
+        {
+            "movieId": 461076,
+            "stid": "576591972453269000_a461076_c6"
+        },
+        {
+            "movieId": 1286015,
+            "stid": "576591972453269000_a1286015_c7"
+        },
+        {
+            "movieId": 1298050,
+            "stid": "576591972453269000_a1298050_c8"
+        },
+        {
+            "movieId": 1225578,
+            "stid": "576591972453269000_a1225578_c9"
+        },
+        {
+            "movieId": 1339160,
+            "stid": "576591972453269000_a1339160_c10"
+        },
+        {
+            "movieId": 1225758,
+            "stid": "576591972453269000_a1225758_c11"
+        }
+    ],
+    "total": 24,
+    "movieList": [
+        {
+            "id": 1282401,
+            "haspromotionTag": false,
+            "img": "http://p1.meituan.net/w.h/movie/f6ec2a022d3644ef493f881d359f65303190471.jpg",
+            "version": "",
+            "nm": "如果声音不记得",
+            "preShow": false,
+            "sc": 8,
+            "globalReleased": true,
+            "wish": 275181,
+            "star": "章若楠,孙晨竣,王彦霖",
+            "rt": "2020-12-04",
+            "showInfo": "今天33家影院放映371场",
+            "showst": 3,
+            "wishst": 0
+        },
+        {
+            "id": 1277751,
+            "haspromotionTag": false,
+            "img": "http://p0.meituan.net/w.h/movie/303c2e671cc4df875c151d688ecbd8962085989.jpg",
+            "version": "v2d imax",
+            "nm": "赤狐书生",
+            "preShow": false,
+            "sc": 7.7,
+            "globalReleased": true,
+            "wish": 177525,
+            "star": "陈立农,李现,哈妮克孜",
+            "rt": "2020-12-04",
+            "showInfo": "今天33家影院放映295场",
+            "showst": 3,
+            "wishst": 0
+        },
+        {
+            "id": 1240838,
+            "haspromotionTag": false,
+            "img": "http://p1.meituan.net/w.h/movie/38dd31a0e1b18e1b00aeb2170c5a65b13885486.jpg",
+            "version": "",
+            "nm": "除暴",
+            "preShow": false,
+            "sc": 8.6,
+            "globalReleased": true,
+            "wish": 76513,
+            "star": "王千源,吴彦祖,春夏",
+            "rt": "2020-11-20",
+            "showInfo": "今天30家影院放映186场",
+            "showst": 3,
+            "wishst": 0
+        },
+        {
+            "id": 1228788,
+            "haspromotionTag": false,
+            "img": "http://p1.meituan.net/w.h/movie/13cb85d810b0530b951625430c2f35044951112.jpg",
+            "version": "",
+            "nm": "一秒钟",
+            "preShow": false,
+            "sc": 8.6,
+            "globalReleased": true,
+            "wish": 54493,
+            "star": "张译,刘浩存,范伟",
+            "rt": "2020-11-27",
+            "showInfo": "今天22家影院放映58场",
+            "showst": 3,
+            "wishst": 0
+        },
+        {
+            "id": 247294,
+            "haspromotionTag": false,
+            "img": "http://p1.meituan.net/w.h/moviemachine/6fb1855f663f9856bfc47b7d013e0474651230.jpg",
+            "version": "v3d imax",
+            "nm": "疯狂原始人2",
+            "preShow": false,
+            "sc": 9.1,
+            "globalReleased": true,
+            "wish": 45125,
+            "star": "艾玛·斯通,尼古拉斯·凯奇,瑞安·雷诺兹",
+            "rt": "2020-11-27",
+            "showInfo": "今天33家影院放映177场",
+            "showst": 3,
+            "wishst": 0
+        },
+        {
+            "id": 345809,
+            "haspromotionTag": false,
+            "img": "http://p1.meituan.net/w.h/moviemachine/7c4ba9633635503044a8f8fb6426aa8d416264.jpg",
+            "version": "v2d imax",
+            "nm": "隐形人",
+            "preShow": false,
+            "sc": 8.6,
+            "globalReleased": true,
+            "wish": 9894,
+            "star": "伊丽莎白·莫斯,奥利弗·杰森-科恩,阿尔迪斯·霍吉",
+            "rt": "2020-12-04",
+            "showInfo": "今天19家影院放映69场",
+            "showst": 3,
+            "wishst": 0
+        },
+        {
+            "id": 461076,
+            "haspromotionTag": false,
+            "img": "http://p0.meituan.net/w.h/moviemachine/70be7bb482b0edc1c74f93e02d95a88a3068051.jpg",
+            "version": "v2d imax",
+            "nm": "紧急救援",
+            "preShow": false,
+            "sc": 0,
+            "globalReleased": false,
+            "wish": 616952,
+            "star": "彭于晏,王彦霖,辛芷蕾",
+            "rt": "2020-12-18",
+            "showInfo": "2020-12-18 下周五上映",
+            "showst": 4,
+            "wishst": 0
+        },
+        {
+            "id": 1286015,
+            "haspromotionTag": false,
+            "img": "http://p0.meituan.net/w.h/moviemachine/a0c6d6e130abe399e4cba58be2b1f871840268.jpg",
+            "version": "",
+            "nm": "宝可梦：超梦的逆袭 进化",
+            "preShow": false,
+            "sc": 8.3,
+            "globalReleased": true,
+            "wish": 53255,
+            "star": "松本梨香,大谷育江,市村正亲",
+            "rt": "2020-12-04",
+            "showInfo": "今天20家影院放映51场",
+            "showst": 3,
+            "wishst": 0
+        },
+        {
+            "id": 1298050,
+            "haspromotionTag": false,
+            "img": "http://p1.meituan.net/w.h/movie/7335afbfd567ca5261d28a11d5bab706106991.jpg",
+            "version": "",
+            "nm": "哆啦A梦：大雄的新恐龙",
+            "preShow": false,
+            "sc": 9.1,
+            "globalReleased": false,
+            "wish": 76902,
+            "star": "水田山葵,大原惠美,嘉数由美",
+            "rt": "2020-12-11",
+            "showInfo": "2020-12-11 本周五上映",
+            "showst": 4,
+            "wishst": 0
+        },
+        {
+            "id": 1225578,
+            "haspromotionTag": false,
+            "img": "http://p0.meituan.net/w.h/moviemachine/cf7d6942f2aa9189cce20519b490b6b1879487.jpg",
+            "version": "",
+            "nm": "野性的呼唤",
+            "preShow": false,
+            "sc": 9.2,
+            "globalReleased": true,
+            "wish": 14703,
+            "star": "哈里森·福特,丹·史蒂文斯,凯伦·吉兰",
+            "rt": "2020-11-13",
+            "showInfo": "今天7家影院放映18场",
+            "showst": 3,
+            "wishst": 0
+        },
+        {
+            "id": 1339160,
+            "haspromotionTag": false,
+            "img": "http://p1.meituan.net/w.h/moviemachine/5cbf9a626b7ed27c96ca3c748655b3ec2550103.jpg",
+            "version": "v2d imax",
+            "nm": "金刚川",
+            "preShow": false,
+            "sc": 9.4,
+            "globalReleased": true,
+            "wish": 123315,
+            "star": "张译,吴京,李九霄",
+            "rt": "2020-10-23",
+            "showInfo": "今天7家影院放映14场",
+            "showst": 3,
+            "wishst": 0
+        },
+        {
+            "id": 1225758,
+            "haspromotionTag": false,
+            "img": "http://p1.meituan.net/w.h/movie/6f1b3f4b8439e077b09b357f733a4c7e2101280.jpg",
+            "version": "",
+            "nm": "末日逃生",
+            "preShow": false,
+            "sc": 8,
+            "globalReleased": true,
+            "wish": 15803,
+            "star": "杰拉德·巴特勒,莫蕾娜·巴卡林,大卫·丹曼",
+            "rt": "2020-11-20",
+            "showInfo": "今天5家影院放映8场",
+            "showst": 3,
+            "wishst": 0
+        }
+    ]
+}
