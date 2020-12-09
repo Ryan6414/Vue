@@ -32,7 +32,7 @@
 
                 <li v-for="(item , index ) in cartList" :key=item.id>
                     <input type="checkbox" v-model="checekdGroup" :value="item" />
-                    <!-- 每一次勾选复选框的时候,执行checkeds方法,并时刻修改知全选/全不选的状态 -->
+                    <!-- 每一次勾选复选框的时候,都会把绑定的item值装进这个临时数组(已勾选) -->
                     <img :src="item.image" />
                     <div>
                         <div>名称: {{item.name}}</div>
@@ -54,7 +54,7 @@
         </template>
     </div>
     <script>
-        new Vue({
+     var vm =   new Vue({
             el: '#box',
             data: {
                 checekdGroup: [],

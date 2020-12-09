@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <style>
+        li {
+            list-style: none;
+        }
+
+        img {
+            width: 120px;
+            height: 180px;
+        }
+
+        .total {
+            background-color: burlywood;
+            color: white;
+            position: fixed;
+            top: 50px;
+            left: 380px;
+            width: 150px;
+            height: 50px;
+            font-size: 20px;
+            line-height: 50px;
+            font-weight: 800;
+            padding-left: 10px;
+        }
+
+        .ibox {
+            width: 300px;
+            height: 180px;
+            border: coral solid 1px;
+        }
+
+        .ispan {
+            position: absolute;
+            margin-top: 10px;
+            margin-left: 15px;
+        }
+
+        .i2 {
+            margin-top: 40px;
+        }
+
+        .i3 {
+            margin-top: 70px;
+        }
+
+        .i4 {
+            margin-top: 100px;
+        }
+
+        .dels {
+            position: absolute;
+            margin-top: 140px;
+            margin-left: 60px;
+        }
+
+        .ip {
+            position: absolute;
+            margin-top: -4px;
+            margin-left: 164px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div v-if="cartList.length===0">
+            购物车已空空如也
+        </div>
+        <div v-else>
+            <template>
+                <input type="checkbox" v-model="allCheck" />全选/全不选 &nbsp;
+                <button @click='delAll'>选中删除</button>
+                <ul>
+                    <li v-for="(item,index) in cartList" :key="item.id">
+                        <div class="ibox">
+                            <img :src='item.image' />
+                            <span class="ispan">商品名: {{item.name}}</span>
+                            <span class="ispan i2">商品价格:${{item.price}}</span>
+                            <span class="ispan i3">限购数量:{{item.limit}}</span>
+                            <span class="ispan i4">数量:
+                                <button @click='item.num--' :disabled='item.num=== 1'> - </button>
+                                {{item.num}}
+                                <button @click='item.num++' :disabled='item.num===item.limit'> + </button>
+                            </span>
+                            <span class="dels">
+                                <button @click='del(item.id,index)'>删除</button>
+                            </span>
+                            <span class="ip">
+                                <input type="checkbox" v-model="checkGroup" :value="item" />
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="total">
+                    总计:${{sum()}}
+                </div>
+            </template>
+        </div>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#box',
+            methods: {
+                del(ids, index) {
+                    //先删源数据
+                    this.cartList.splice(index, 1);
+                    this.checkGroup = this.checkGroup.filter(item => item.id !== ids);
+                    console.log(this.checkGroup);
+                },
+                delAll() {
+                    this.checkGroup.forEach(it => {
+                        this.cartList = this.cartList.filter(item => item.id !== it.id)
+                    });
+                    //删完源数据一定要记得删已勾选的复选框.
+                    this.checkGroup = [];
+                },
+                sum() {
+                    var sum = 0;
+                    this.cartList.forEach(item => { sum += item.num * item.price });
+                    return sum;
+                }
+            },
+            computed: {
+                allCheck: {
+                    get() {
+                        return this.checkGroup.length === this.cartList.length;
+                    },
+                    set(data) {
+                        if (data) {
+                            this.checkGroup = this.cartList;
+                        } else {
+                            this.checkGroup = [];
+                        }
+                    }
+                }
+            },
+            data: {
+                checkGroup: [],
+                cartList: [
+                    {
+                        id: 1023,      //id
+                        name: 'xw-50机油',   //商品名
+                        price: 500,     //价格
+                        limit: 3,     //限购
+                        num: 2,      //购物车数量
+                        image: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2853553659,1775735885&fm=26&gp=0.jpg'
+                    },
+
+                    {
+                        id: 1013,
+                        name: '手机保护壳',
+                        price: 10,
+                        limit: 46,
+                        num: 45,
+                        image: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2202780618,895893289&fm=26&gp=0.jpg'
+                    },
+                    {
+                        id: 1121,
+                        name: '矿物质奶茶',
+                        price: 20,
+                        limit: 15,
+                        num: 12,
+                        image: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1078861629,3747050294&fm=26&gp=0.jpg'
+                    },
+                    {
+                        id: 1038,
+                        name: '剃须刀',
+                        price: 50,
+                        limit: 6,
+                        num: 2,
+                        image: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2485954775,21433741&fm=26&gp=0.jpg'
+                    },
+                    {
+                        id: 1009,
+                        name: '菜刀',
+                        price: 100,
+                        limit: 20,
+                        num: 12,
+                        image: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=191648073,1956090025&fm=11&gp=0.jpg'
+                    }
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

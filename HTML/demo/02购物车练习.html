@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/lib/vue.js"></script>
+    <style>
+        li {
+            border-right: 1px solid #ddd;
+            list-style: none;  
+            line-height: 50px; 
+        }
+
+        .tatol {
+            background-color: burlywood;
+            color: white;
+            /* display: none; */
+            position: fixed;
+            top: 50px;
+            left: 600px;
+            width: 300px;
+            height: 50px;
+            font-size: 20px;
+            text-align: center;
+            line-height: 50px;
+            font-weight: 800;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='box'>
+        <div v-if="cartList.length===0">
+            购物车已空空如也!
+        </div>
+        <template v-else>
+            <ul>
+                <!-- 显示的核心代码 -->
+                <input type="checkbox" v-model="checkAll">全选/全不选
+                <button @click='delAll'>删除选中</button>
+                <li v-for="(item,index) in cartList" :key='item.id'>
+                    <img :src='item.image' style="width: 180px; height: 230px;" />
+                    {{item.name}}
+                    <button @click='item.num--' :disabled="item.num===1">-</button>
+                    {{item.num}}
+                    <button @click='item.num++' :disabled="item.num===item.limit">+</button>
+                    价格: ${{item.price}}
+                    <input type="checkbox" v-model="datalist" :value="item" />
+                    <button @click=del(item.id,index)>删除</button>
+                </li>
+            </ul>
+            <div class='tatol'>总价为:${{totals()}}</div>
+
+        </template>
+
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#box',
+            methods: {
+                //功能逻辑代码
+                totals() {
+                    var sum = 0;
+                    this.cartList.forEach(item => { sum += item.price * item.num })
+                    return sum;
+                },
+                del(id, index) {
+                    this.cartList.splice(index, 1);
+                    this.datalist = this.datalist.filter(item => item.id !== id)
+                },
+                delAll() {
+                    this.datalist.forEach(item => { this.cartList = this.cartList.filter(it => item.id !== it.id) })
+                    //先遍历已勾选的
+                    this.datalist = [];
+                }
+            },
+            computed: {
+                checkAll: {
+                    //全选/全不选
+                    get() {
+                        return this.datalist.length === this.cartList.length;
+                    },
+                    set(data) {
+                        if (data) {
+                            this.datalist = this.cartList;
+                        } else {
+                            this.datalist = [];
+                        }
+                    }
+                }
+            },
+            data: {
+
+                falg: false,
+                datalist: [],
+                cartList: [
+                    {
+                        id: 1023,      //id
+                        name: 'xw-50机油',   //商品名
+                        price: 500,     //价格
+                        limit: 3,     //限购
+                        num: 2,      //购物车数量
+                        image: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2853553659,1775735885&fm=26&gp=0.jpg'
+                    },
+
+                    {
+                        id: 1013,
+                        name: '手机保护壳',
+                        price: 10,
+                        limit: 46,
+                        num: 45,
+                        image: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2202780618,895893289&fm=26&gp=0.jpg'
+                    },
+                    {
+                        id: 1121,
+                        name: '矿物质奶茶',
+                        price: 20,
+                        limit: 15,
+                        num: 12,
+                        image: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1078861629,3747050294&fm=26&gp=0.jpg'
+                    },
+                    {
+                        id: 1038,
+                        name: '剃须刀',
+                        price: 50,
+                        limit: 6,
+                        num: 2,
+                        image: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2485954775,21433741&fm=26&gp=0.jpg'
+                    },
+                    {
+                        id: 1009,
+                        name: '菜刀',
+                        price: 100,
+                        limit: 20,
+                        num: 12,
+                        image: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=191648073,1956090025&fm=11&gp=0.jpg'
+                    }
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

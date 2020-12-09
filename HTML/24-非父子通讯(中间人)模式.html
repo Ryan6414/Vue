@@ -10,42 +10,73 @@
 
 <body>
     <div id="box">
-        <button @click='handleAjax'>ajax</button>
+        <button @click='handleAjax'>ajax</button>      
+        <!-- 1.1_点击按键发生ajax请求 -->
+        <my-title :movlist='datalist' @fale='info'></my-title>
+        <!-- 2.1_子组件接收父组件的datalist数组. -->
+        <!-- 3.1_ @fale监听到的信息传给我info方法. -->
+        <my-son :infos='infox'></my-son>
+        <!-- 4.1最后将由我们的中间人传递数据给我们的第二个组件 -->
     </div>
 
     <script>
-        Vue.component('my-title', {
-            template: `
-           
+        Vue.component('mySon',{
+            //4.2 这样就完成了非父子关系的通讯了. 
+            template:`
+            <div>{{infos}}</div>
             `,
+            props: ['infos']
+        })
+
+        Vue.component('myTitle', {
+            // 2.2_ 接到datalist数组后,在模板中遍历数组.
+            // 2.3_ 当碰到自动伸缩的图片服务器时,对图片路径进行正则处理.得到正常的图片显示
+            // 2.4_ 在模板中设置一个按钮,将遍历出来的json中的详情信息做一个点击事件.
+            template: `
+            <ul>
+            <li v-for="(item,index) in movlist" :key='item.id'>
+                <img :src='img(item.img)' />
+                {{item.nm}}
+                <button @click='page(item.showInfo)'> 详情</button> 
+            </li>
+            </ul>
+            `,
+            props:['movlist'],
             methods:{
-               
+                img(vet){
+                    return vet.replace('w.h','')+'@1l_1e_1c_128w_180h';
+                },
+                page(data){
+                    this.$emit("fale",data);
+                    //2.5_ 点击后将json中的数据返给父组件(目前父组件以及在监听了,有任何动静,父组件都能捕获到)
+                }
             },
-            data() {
-              
-                
-            },
-            props: {
-               
+            data(){
+                return {                
+                }
             }
         });
 
         var vm = new Vue({
             el: "#box",
             data: {
-               datalist:[],
+                datalist: [],
+                infox : ''      //3.3_ 他就是这个中间人
             },
             methods: {
-                handleAjax(){
+                //1.2_ ajax请求发出,响应一个json信息传给datalist数组这个状态.
+                handleAjax() {
                     fetch('/HTML/json/maoyan.json')
-                    .then(item=>{item.json()})
-                    .then(item=>{console.log(item)});
-                   
+                        .then(res => res.json())
+                        .then(res => { this.datalist = res.movieList });
+                },
+                info(data){
+                    this.infox=data;
                 }
-                
+                //3.2_ 将子组件发来的数据,再赋值给我们的中间人.
             },
             computed: {
-               
+
             }
         })
     </script>
